@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  diarization:
+    build: .
+    container_name: speaker-diarization
+    volumes:
+      - ./Interview.mp3:/app/Interview.mp3:ro
+      - ./conversation.md:/app/conversation.md
+      - ./output:/app/output
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+    restart: unless-stopped
