@@ -2,58 +2,38 @@
 
 This project uses **WhisperX** to perform speech-to-text transcription with speaker diarization (identifying who spoke when).
 
-## Features
-- Audio preprocessing (conversion to mono 16kHz WAV).
-- Fast transcription using WhisperX (Large-v3 model).
-- Speaker diarization to identify different speakers.
-- Word-level alignment for precise timestamps.
-- Clean output formatted in Markdown.
+## Key Versions
+- **Python**: 3.10+
+- **WhisperX**: 3.8.1
+- **PyTorch**: 2.8.0
+- **Pyannote Audio**: 4.0.4
+- **Transformers**: 4.57.6
 
-## Prerequisites
-- Python 3.10+
-- NVIDIA GPU with CUDA (recommended) or CPU.
-- FFmpeg installed on your system.
-- A Hugging Face account and Access Token (HF_TOKEN) with access to:
-  - `pyannote/segmentation-3.0`
-  - `pyannote/speaker-diarization-3.1`
+## Setup & Run Commands
 
-## Setup
-
-1. **Clone the repository**:
-   ```bash
-   git clone <your-repo-url>
-   cd Diarization
-   ```
-
-2. **Create a virtual environment**:
+1. **Create & Activate Environment**:
    ```bash
    python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   .venv\Scripts\activate
    ```
 
-3. **Install dependencies**:
+2. **Install Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Configure Environment Variables**:
-   Create a `.env` file in the root directory and add your Hugging Face token:
+3. **Set Hugging Face Token**:
+   Create a `.env` file and add your token:
    ```env
-   HF_TOKEN=your_huggingface_token_here
+   HF_TOKEN=your_token_here
    ```
 
-## Usage
-
-1. Place your audio file (e.g., `Interview.mp3`) in the project root.
-2. Update the `audio_file` variable in `app1.py` if necessary.
-3. Run the script:
+4. **Run Transcription**:
    ```bash
    python app1.py
    ```
-4. The diarized transcript will be saved to `conversation.md`.
 
-## Project Structure
-- `app1.py`: Main script for transcription and diarization.
-- `requirements.txt`: List of Python dependencies.
-- `.gitignore`: Files and folders to be excluded from Git.
-- `Dockerfile` & `docker-compose.yml`: For containerized execution.
+## Requirements
+Ensure you have access to these models on Hugging Face:
+- `pyannote/segmentation-3.0`
+- `pyannote/speaker-diarization-3.1`
